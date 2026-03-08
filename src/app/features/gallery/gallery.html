@@ -1,0 +1,31 @@
+<section class="gallery-page section">
+  <div class="container">
+    <div class="gallery-page__header">
+      <div class="accent-line"></div>
+      <h1 class="section-title">Gallery</h1>
+      <p class="section-subtitle">Real cuts, real clients, real craft</p>
+    </div>
+
+    <div class="gallery-page__filters" role="group" aria-label="Filter by category">
+      @for (cat of categories; track cat.value) {
+        <button
+          class="filter-btn"
+          [class.active]="activeCategory() === cat.value"
+          (click)="setCategory(cat.value)"
+          [attr.aria-pressed]="activeCategory() === cat.value">
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <div class="gallery-grid" role="list">
+      @for (item of filteredItems(); track item.id) {
+        <article class="gallery-item" role="listitem">
+          <div class="gallery-item__img">
+            <span class="gallery-item__label">{{ item.label }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

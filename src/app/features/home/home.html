@@ -1,0 +1,84 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero__content">
+    <div class="hero__label">Welcome to</div>
+    <h1 class="hero__title">
+      Nic P<br>
+      <span class="hero__title-sub">The Barber</span>
+    </h1>
+    <p class="hero__tagline">Fresh cuts. Clean fades. Real craft.</p>
+    <div class="hero__actions">
+      <a routerLink="/reservations" class="btn btn-primary">Book a Cut</a>
+      <a routerLink="/gallery" class="btn btn-outline">View Gallery</a>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__image">
+        <div class="about__image-placeholder" aria-hidden="true">
+          <span>Photo</span>
+        </div>
+      </div>
+      <div class="about__content">
+        <div class="accent-line"></div>
+        <h2 class="section-title">Meet the Barber</h2>
+        <p class="about__bio">
+          With over a decade behind the chair, Nic P has built a reputation for
+          precision, creativity, and a passion for the craft. Every client who
+          sits in the chair leaves with a cut that fits their style and their life.
+        </p>
+        <p class="about__bio">
+          Whether you're looking for a clean fade, a classic cut, or a full
+          grooming experience, Nic P brings the same level of detail and care
+          to every appointment.
+        </p>
+        <div class="about__stats">
+          <div class="about__stat">
+            <span class="about__stat-value">10+</span>
+            <span class="about__stat-label">Years Experience</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-value">500+</span>
+            <span class="about__stat-label">Happy Clients</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-value">5★</span>
+            <span class="about__stat-label">Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services section" id="services">
+  <div class="container">
+    <div class="services__header">
+      <div class="accent-line"></div>
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">Quality grooming tailored to you</p>
+    </div>
+    <div class="services__grid">
+      @for (service of services; track service.name) {
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true">{{ service.icon }}</div>
+          <h3 class="service-card__name">{{ service.name }}</h3>
+          <p class="service-card__desc">{{ service.description }}</p>
+          <div class="service-card__price">{{ service.price }}</div>
+        </article>
+      }
+    </div>
+    <div class="services__cta">
+      <a routerLink="/reservations" class="btn btn-primary">Book Your Appointment</a>
+    </div>
+  </div>
+</section>

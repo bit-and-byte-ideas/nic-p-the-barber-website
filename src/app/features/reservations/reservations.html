@@ -1,0 +1,175 @@
+<section class="reservations section">
+  <div class="container">
+    <div class="reservations__header">
+      <div class="accent-line"></div>
+      <h1 class="section-title">Book a Cut</h1>
+      <p class="section-subtitle">Reserve your spot — we'll confirm within 24 hours</p>
+    </div>
+
+    @if (submitted()) {
+      <div class="reservations__success">
+        <div class="success-card">
+          <div class="success-card__icon" aria-hidden="true">✓</div>
+          <h2 class="success-card__title">Request Received!</h2>
+          <p class="success-card__msg">
+            Thanks for reaching out. We'll confirm your appointment within 24 hours.
+          </p>
+          <button class="btn btn-outline" (click)="reset()">Book Another</button>
+        </div>
+      </div>
+    } @else {
+      <form
+        class="booking-form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        novalidate>
+
+        <div class="form-grid">
+          <!-- Name -->
+          <div class="form-group">
+            <label for="name" class="form-label">
+              Full Name <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="name"
+              type="text"
+              class="form-input"
+              [class.form-input--error]="hasError('name', 'required') || hasError('name', 'minlength')"
+              formControlName="name"
+              placeholder="Your full name"
+              autocomplete="name"
+              aria-required="true" />
+            @if (hasError('name', 'required')) {
+              <span class="form-error" role="alert">Name is required</span>
+            } @else if (hasError('name', 'minlength')) {
+              <span class="form-error" role="alert">Name must be at least 2 characters</span>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email" class="form-label">
+              Email <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              class="form-input"
+              [class.form-input--error]="hasError('email', 'required') || hasError('email', 'email')"
+              formControlName="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+              aria-required="true" />
+            @if (hasError('email', 'required')) {
+              <span class="form-error" role="alert">Email is required</span>
+            } @else if (hasError('email', 'email')) {
+              <span class="form-error" role="alert">Enter a valid email address</span>
+            }
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="phone" class="form-label">
+              Phone <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              class="form-input"
+              [class.form-input--error]="hasError('phone', 'required') || hasError('phone', 'pattern')"
+              formControlName="phone"
+              placeholder="(555) 123-4567"
+              autocomplete="tel"
+              aria-required="true" />
+            @if (hasError('phone', 'required')) {
+              <span class="form-error" role="alert">Phone is required</span>
+            } @else if (hasError('phone', 'pattern')) {
+              <span class="form-error" role="alert">Enter a valid phone number</span>
+            }
+          </div>
+
+          <!-- Service -->
+          <div class="form-group">
+            <label for="service" class="form-label">
+              Service <span class="required" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="service"
+              class="form-input form-select"
+              [class.form-input--error]="hasError('service', 'required')"
+              formControlName="service"
+              aria-required="true">
+              <option value="" disabled>Select a service</option>
+              @for (svc of services; track svc) {
+                <option [value]="svc">{{ svc }}</option>
+              }
+            </select>
+            @if (hasError('service', 'required')) {
+              <span class="form-error" role="alert">Please select a service</span>
+            }
+          </div>
+
+          <!-- Date -->
+          <div class="form-group">
+            <label for="date" class="form-label">
+              Preferred Date <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="date"
+              type="date"
+              class="form-input"
+              [class.form-input--error]="hasError('date', 'required')"
+              formControlName="date"
+              [min]="minDate"
+              aria-required="true" />
+            @if (hasError('date', 'required')) {
+              <span class="form-error" role="alert">Date is required</span>
+            }
+          </div>
+
+          <!-- Time -->
+          <div class="form-group">
+            <label for="time" class="form-label">
+              Preferred Time <span class="required" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="time"
+              class="form-input form-select"
+              [class.form-input--error]="hasError('time', 'required')"
+              formControlName="time"
+              aria-required="true">
+              <option value="" disabled>Select a time</option>
+              @for (slot of timeSlots; track slot) {
+                <option [value]="slot">{{ slot }}</option>
+              }
+            </select>
+            @if (hasError('time', 'required')) {
+              <span class="form-error" role="alert">Time is required</span>
+            }
+          </div>
+
+          <!-- Notes -->
+          <div class="form-group form-group--full">
+            <label for="notes" class="form-label">
+              Notes <span class="optional">(optional)</span>
+            </label>
+            <textarea
+              id="notes"
+              class="form-input form-textarea"
+              formControlName="notes"
+              placeholder="Any special requests or things we should know..."
+              rows="4">
+            </textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-disclaimer">
+            * We'll reach out to confirm your booking. Walk-ins welcome, but reservations get priority.
+          </p>
+          <button type="submit" class="btn btn-primary">Request Appointment</button>
+        </div>
+      </form>
+    }
+  </div>
+</section>
