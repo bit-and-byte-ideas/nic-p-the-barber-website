@@ -1,0 +1,31 @@
+name: Terraform — Dev
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'deploy/terraform/dev/**'
+      - '.github/workflows/terraform-dev.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'deploy/terraform/dev/**'
+      - '.github/workflows/terraform-dev.yml'
+  workflow_dispatch:
+
+jobs:
+  opentofu:
+    uses: bit-and-byte-ideas/azure-static-webapp-cicd-kit/.github/workflows/opentofu.yml@main
+    with:
+      working_directory: deploy/terraform/dev
+      environment: terraform-dev
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
+      TF_BACKEND_RESOURCE_GROUP: ${{ secrets.TF_BACKEND_RESOURCE_GROUP }}
+      TF_BACKEND_STORAGE_ACCOUNT: ${{ secrets.TF_BACKEND_STORAGE_ACCOUNT }}
+      TF_BACKEND_CONTAINER: ${{ secrets.TF_BACKEND_CONTAINER }}
+      TF_BACKEND_KEY: ${{ secrets.TF_BACKEND_KEY_DEV }}
