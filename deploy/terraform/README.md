@@ -27,10 +27,10 @@ no `-var-file` flags.
 
 Two workflows call the kit's reusable `opentofu.yml` workflow:
 
-| Workflow | Branch trigger | Environment gate |
+| Workflow | Trigger | Environment gate |
 |---|---|---|
-| `terraform-dev.yml` | `develop` | `terraform-dev` |
-| `terraform-prod.yml` | `main` | `terraform-prod` |
+| `terraform-dev.yml` | push to `main` | `terraform-dev` |
+| `terraform-prod.yml` | GitHub Release published | `terraform-prod` |
 
 Pipeline stages (from the reusable workflow):
 
@@ -74,10 +74,10 @@ az storage account blob-service-properties update \
 ### 2. Create Azure App Registration with OIDC federated credentials
 
 Follow the [OIDC setup steps in the kit README](https://github.com/bit-and-byte-ideas/azure-static-webapp-cicd-kit#azure-oidc-setup).
-Create one federated credential per branch:
+Create one federated credential per trigger type:
 
-- `repo:bit-and-byte-ideas/nic-p-the-barber-website:ref:refs/heads/develop` (dev)
-- `repo:bit-and-byte-ideas/nic-p-the-barber-website:ref:refs/heads/main` (prod)
+- `repo:bit-and-byte-ideas/nic-p-the-barber-website:ref:refs/heads/main` (dev — push to main)
+- `repo:bit-and-byte-ideas/nic-p-the-barber-website:environment:terraform-prod` (prod — GitHub Environment approval)
 
 ### 3. Add GitHub repository secrets
 
