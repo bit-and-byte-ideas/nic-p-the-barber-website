@@ -90,8 +90,8 @@ Create one federated credential per trigger type:
 | `TF_BACKEND_RESOURCE_GROUP` | Resource group from step 1 |
 | `TF_BACKEND_STORAGE_ACCOUNT` | Storage account name from step 1 |
 | `TF_BACKEND_CONTAINER` | `tfstate` |
-| `TF_BACKEND_KEY_DEV` | `nic-p-barber-dev.tfstate` |
-| `TF_BACKEND_KEY_PROD` | `nic-p-barber-prod.tfstate` |
+| `TF_BACKEND_KEY (DEV)` | `nic-p-barber-dev.tfstate` |
+| `TF_BACKEND_KEY (PROD)` | `nic-p-barber-prod.tfstate` |
 
 ### 4. Create GitHub Environments with required reviewers
 

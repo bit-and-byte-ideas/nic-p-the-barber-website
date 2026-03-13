@@ -88,8 +88,8 @@ Configure these in **Settings → Secrets and variables → Actions**.
 | `TF_BACKEND_RESOURCE_GROUP` | Resource group containing the state storage account |
 | `TF_BACKEND_STORAGE_ACCOUNT` | Storage account name |
 | `TF_BACKEND_CONTAINER` | Blob container name (`tfstate`) |
-| `TF_BACKEND_KEY_DEV` | State file path for dev (`nic-p-barber-dev.tfstate`) |
-| `TF_BACKEND_KEY_PROD` | State file path for prod (`nic-p-barber-prod.tfstate`) |
+| `TF_BACKEND_KEY (DEV)` | State file path for dev (`nic-p-barber-dev.tfstate`) |
+| `TF_BACKEND_KEY (PROD)` | State file path for prod (`nic-p-barber-prod.tfstate`) |
 
 ### App Deployment Tokens
 

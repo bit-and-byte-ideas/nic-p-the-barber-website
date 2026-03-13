@@ -196,8 +196,8 @@ Navigate to **Settings → Secrets and variables → Actions → New repository 
 | `TF_BACKEND_RESOURCE_GROUP` | `nic-p-barber-tfstate-rg` | Step 2 |
 | `TF_BACKEND_STORAGE_ACCOUNT` | your storage account name | Step 2 |
 | `TF_BACKEND_CONTAINER` | `tfstate` | Step 2 |
-| `TF_BACKEND_KEY_DEV` | `nic-p-barber-dev.tfstate` | hardcoded |
-| `TF_BACKEND_KEY_PROD` | `nic-p-barber-prod.tfstate` | hardcoded |
+| `TF_BACKEND_KEY (DEV)` | `nic-p-barber-dev.tfstate` | hardcoded |
+| `TF_BACKEND_KEY (PROD)` | `nic-p-barber-prod.tfstate` | hardcoded |
 | `AZURE_STATIC_WEB_APPS_API_TOKEN_DEV` | dev SWA api_key | Step 4 output |
 | `AZURE_STATIC_WEB_APPS_API_TOKEN_PROD` | prod SWA api_key | Step 5 output |
 
