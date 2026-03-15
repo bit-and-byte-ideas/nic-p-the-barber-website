@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nic-p-the-barber-website
+  title: Nic P The Barber — Website
+  description: >
+    Public-facing Angular 21 website for Nic P The Barber. Clients can browse
+    services, view a work gallery, and submit reservation requests. Hosted on
+    Azure Static Web Apps and deployed via GitHub Actions and OpenTofu.
+  tags:
+    - angular
+    - frontend
+    - azure
+    - static-web-app
+    - opentofu
+  annotations:
+    github.com/project-slug: bit-and-byte-ideas/nic-p-the-barber-website
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: production
+  owner: bit-and-byte-ideas
+  system: nic-p-the-barber

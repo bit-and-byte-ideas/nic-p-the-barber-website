@@ -1,59 +1,72 @@
-# NicPTheBarberWebsite
+# Nic P The Barber — Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+Public-facing website for Nic P The Barber. Built with Angular 21, deployed to Azure Static Web Apps via GitHub Actions and OpenTofu.
 
-## Development server
+## Overview
 
-To start a local development server, run:
+A single-page application that lets clients browse services, view a work gallery, and submit reservation requests. Infrastructure is provisioned and version-controlled as code using the shared [azure-static-webapp-cicd-kit](https://github.com/bit-and-byte-ideas/azure-static-webapp-cicd-kit).
 
-```bash
-ng serve
+## Features
+
+- **Home** — hero section, about blurb, and services menu with pricing
+- **Gallery** — filterable work grid (fades, beards, styles) powered by Angular signals
+- **Reservations** — booking form with client-side validation
+
+## Repository Structure
+
+```
+src/app/
+├── features/
+│   ├── home/           Hero, about, and services sections
+│   ├── gallery/        Signal-driven filterable photo grid
+│   └── reservations/   Booking form with reactive validation
+└── shared/ui/
+    ├── header/         Responsive navigation with mobile menu
+    └── footer/
+
+deploy/terraform/
+├── dev/                OpenTofu root module — dev environment (Free tier)
+└── prod/               OpenTofu root module — prod environment (Standard tier)
+
+.github/workflows/
+├── deploy-dev.yml      App deploy → dev  (push to main / PR previews)
+├── deploy-prod.yml     App deploy → prod (release tags)
+├── terraform-dev.yml   Infra deploy → dev  (push to main)
+└── terraform-prod.yml  Infra deploy → prod (release tags)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Getting Started
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+**Prerequisites:** Node.js 22, npm
 
 ```bash
-ng generate component component-name
+npm install
+npm start          # http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Local Development
 
 ```bash
-ng generate --help
+npm start                                        # dev server with live reload
+npm run build                                    # dev build
+npm run build -- --configuration=production      # production build
+npm test                                         # run unit tests (Vitest)
+npm test -- --watch=false                        # single-run for CI
 ```
 
-## Building
+See the [Development Guide](./docs/development.md) for Angular conventions, code generation, and testing patterns.
 
-To build the project run:
+## Documentation
 
-```bash
-ng build
-```
+| Page | Description |
+|---|---|
+| [Architecture](./docs/architecture.md) | Component map, design decisions, tech stack |
+| [Development Guide](./docs/development.md) | Local setup, conventions, testing |
+| [Operations & CI/CD](./docs/operations.md) | Pipelines, environments, secrets, deployments |
+| [First-Time Setup](./docs/first-time-setup.md) | Bootstrap a new Azure/GitHub account from scratch |
+| [Troubleshooting](./docs/troubleshooting.md) | Common issues and fixes |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Ownership
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Organization:** Bit & Byte Ideas
+**Repo:** [bit-and-byte-ideas/nic-p-the-barber-website](https://github.com/bit-and-byte-ideas/nic-p-the-barber-website)

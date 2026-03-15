@@ -1,0 +1,21 @@
+name: Terraform — Prod
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  opentofu:
+    uses: bit-and-byte-ideas/azure-static-webapp-cicd-kit/.github/workflows/opentofu.yml@main
+    with:
+      working_directory: deploy/terraform/prod
+      environment: prod
+    secrets:
+      AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID_PROD }}
+      TF_BACKEND_RESOURCE_GROUP: ${{ vars.TF_BACKEND_RESOURCE_GROUP }}
+      TF_BACKEND_STORAGE_ACCOUNT: ${{ vars.TF_BACKEND_STORAGE_ACCOUNT }}
+      TF_BACKEND_CONTAINER: ${{ vars.TF_BACKEND_CONTAINER }}
+      TF_BACKEND_KEY: ${{ vars.TF_BACKEND_KEY_PROD }}

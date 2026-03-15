@@ -1,0 +1,17 @@
+site_name: Nic P The Barber — Website
+site_description: Documentation for the Nic P The Barber public website
+repo_url: https://github.com/bit-and-byte-ideas/nic-p-the-barber-website
+repo_name: bit-and-byte-ideas/nic-p-the-barber-website
+
+docs_dir: docs
+
+nav:
+  - Overview: index.md
+  - Architecture: architecture.md
+  - Development Guide: development.md
+  - Operations & CI/CD: operations.md
+  - First-Time Setup: first-time-setup.md
+  - Troubleshooting: troubleshooting.md
+
+plugins:
+  - techdocs-core
