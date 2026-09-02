@@ -7,6 +7,9 @@ on:
 
 jobs:
   opentofu:
+    permissions:
+      contents: read
+      id-token: write
     uses: bit-and-byte-ideas/azure-static-webapp-cicd-kit/.github/workflows/opentofu.yml@main
     with:
       working_directory: deploy/terraform/prod
