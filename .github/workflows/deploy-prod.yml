@@ -5,11 +5,16 @@ on:
     types: [published]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build_and_deploy:
     name: Build and Deploy (Prod)
     runs-on: ubuntu-latest
     environment: prod
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout repository
